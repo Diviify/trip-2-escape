@@ -1,4 +1,19 @@
+import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
+import { createPageMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createPageMetadata({
+  title: "Curated Travel Across India",
+  description:
+    "Plan unforgettable journeys with Wanderlust Travel — handpicked destinations, guided tour packages, and expert travel stories across Himachal, Rajasthan, Goa, and beyond.",
+  path: "/",
+  keywords: [
+    "India travel agency",
+    "holiday packages India",
+    "adventure travel",
+    "cultural tours",
+  ],
+});
 
 export default function Home() {
   return (
@@ -66,7 +81,7 @@ export default function Home() {
       >
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="font-heading text-3xl font-semibold">Book Now</h2>
-          <p className="text-primary-foreground/80 mt-3">
+          <p className="mt-3 text-primary-foreground/80">
             Reserve your spot on our next curated departure.
           </p>
         </div>

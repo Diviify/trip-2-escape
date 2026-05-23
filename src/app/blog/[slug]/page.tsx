@@ -6,10 +6,10 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { BlogCategoryBadge } from "@/components/blog/blog-category-badge";
 import { TableOfContents } from "@/components/blog/table-of-contents";
-import { formatBlogDate, getSiteUrl } from "@/lib/blog";
+import { formatBlogDate } from "@/lib/blog";
 import { getAllPostSlugs, getPostBySlug } from "@/lib/blog.server";
 import { mdxComponents } from "@/lib/mdx-components";
-import { siteConfig } from "@/lib/site";
+import { createPageMetadata } from "@/lib/seo";
 
 type BlogPostPageProps = {
   params: { slug: string };
@@ -21,47 +21,21 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: BlogPostPageProps): Metadata {
   const post = getPostBySlug(params.slug);
-  const siteUrl = getSiteUrl();
 
   if (!post) {
     return { title: "Article not found" };
   }
 
-  const url = `${siteUrl}/blog/${post.slug}`;
-  const ogImage = post.featuredImage;
-
-  return {
+  return createPageMetadata({
     title: post.title,
     description: post.excerpt,
-    authors: [{ name: post.author.name }],
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url,
-      siteName: siteConfig.name,
-      locale: "en_IN",
-      type: "article",
-      publishedTime: post.date,
-      authors: [post.author.name],
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.excerpt,
-      images: [ogImage],
-    },
-    alternates: {
-      canonical: url,
-    },
-  };
+    path: `/blog/${post.slug}`,
+    image: post.featuredImage,
+    ogType: "article",
+    publishedTime: post.date,
+    authors: [post.author.name],
+    keywords: [post.category, "India travel", post.title],
+  });
 }
 
 export default function BlogPostPage({ params }: BlogPostPageProps) {

@@ -5,11 +5,13 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BookingEnquiryForm } from "@/components/destinations/booking-enquiry-form";
 import { PhotoGallery } from "@/components/destinations/photo-gallery";
+import { DestinationJsonLd } from "@/components/seo/destination-json-ld";
 import {
   formatPriceInr,
   getAllDestinationSlugs,
   getDestinationBySlug,
 } from "@/lib/destinations";
+import { createPageMetadata } from "@/lib/seo";
 
 type DestinationPageProps = {
   params: { slug: string };
@@ -26,10 +28,18 @@ export function generateMetadata({ params }: DestinationPageProps): Metadata {
     return { title: "Destination not found" };
   }
 
-  return {
-    title: destination.name,
+  return createPageMetadata({
+    title: `${destination.name}, ${destination.state}`,
     description: destination.shortDescription,
-  };
+    path: `/destinations/${destination.slug}`,
+    image: destination.image,
+    keywords: [
+      destination.name,
+      `${destination.state} travel`,
+      "India tourism",
+      destination.duration,
+    ],
+  });
 }
 
 export default function DestinationDetailPage({
@@ -43,6 +53,7 @@ export default function DestinationDetailPage({
 
   return (
     <main className="flex-1">
+      <DestinationJsonLd destination={destination} />
       <section className="relative min-h-[42vh] overflow-hidden">
         <Image
           src={destination.image}

@@ -1,19 +1,21 @@
 import type { Metadata } from "next";
 import { BlogListing } from "@/components/blog/blog-listing";
 import { getAllPosts } from "@/lib/blog.server";
-import { siteConfig } from "@/lib/site";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata: Metadata = createPageMetadata({
+  title: "Travel Blog",
   description:
-    "Travel tips, culture guides, food trails, and adventure stories from across India.",
-  openGraph: {
-    title: `Blog | ${siteConfig.name}`,
-    description:
-      "Travel tips, culture guides, food trails, and adventure stories from across India.",
-    type: "website",
-  },
-};
+    "Travel tips, culture guides, food trails, and adventure stories from across India — insider advice from the Wanderlust Travel team.",
+  path: "/blog",
+  keywords: [
+    "India travel blog",
+    "travel tips",
+    "culture guides",
+    "food travel",
+    "adventure travel",
+  ],
+});
 
 export default function BlogPage() {
   const posts = getAllPosts();

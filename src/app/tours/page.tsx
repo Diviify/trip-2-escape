@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
 import { ToursListing } from "@/components/tours/tours-listing";
+import { createPageMetadata } from "@/lib/seo";
 import { tours } from "@/lib/tours";
 
-export const metadata: Metadata = {
-  title: "Tours",
+export const metadata: Metadata = createPageMetadata({
+  title: "Tour Packages",
   description:
-    "Browse curated tour packages across India. Filter by budget, duration, and group size.",
-};
+    "Browse curated tour packages across India. Filter by budget, duration, and group size — from Himalayan treks to Rajasthan desert safaris and Goa beach escapes.",
+  path: "/tours",
+  keywords: [
+    "India tour packages",
+    "group tours India",
+    "adventure tours",
+    "budget travel India",
+  ],
+});
 
 export default function ToursPage() {
   return (
@@ -19,7 +27,7 @@ export default function ToursPage() {
           <h1 className="mt-3 font-heading text-4xl font-semibold sm:text-5xl">
             Tour Packages
           </h1>
-          <p className="text-primary-foreground/80 mt-4 max-w-2xl">
+          <p className="mt-4 max-w-2xl text-primary-foreground/80">
             Handcrafted itineraries with local guides, boutique stays, and
             unforgettable experiences — filter and sort to find your perfect
             trip.

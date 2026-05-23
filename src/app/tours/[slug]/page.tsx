@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import { StarRating } from "@/components/tours/star-rating";
 import { TourBookingForm } from "@/components/tours/tour-booking-form";
 import { buttonVariants } from "@/components/ui/button";
+import { createPageMetadata } from "@/lib/seo";
 import { formatPriceInr, getAllTourSlugs, getTourBySlug } from "@/lib/tours";
 import { cn } from "@/lib/utils";
 
@@ -24,10 +25,13 @@ export function generateMetadata({ params }: TourPageProps): Metadata {
     return { title: "Tour not found" };
   }
 
-  return {
+  return createPageMetadata({
     title: tour.title,
     description: tour.shortDescription,
-  };
+    path: `/tours/${tour.slug}`,
+    image: tour.thumbnail,
+    keywords: [tour.title, tour.region, "India tour package", tour.durationLabel],
+  });
 }
 
 export default function TourDetailPage({ params }: TourPageProps) {

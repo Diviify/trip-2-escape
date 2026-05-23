@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import { DestinationGrid } from "@/components/destinations/destination-grid";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Destinations",
+export const metadata: Metadata = createPageMetadata({
+  title: "Destinations in India",
   description:
-    "Explore curated travel destinations across Himachal, Uttarakhand, Rajasthan, Goa, and Maharashtra.",
-};
+    "Explore curated travel destinations across Himachal, Uttarakhand, Rajasthan, Goa, and Maharashtra. Find your next hill station, desert escape, or beach holiday.",
+  path: "/destinations",
+  keywords: [
+    "India destinations",
+    "Himachal Pradesh travel",
+    "Rajasthan holidays",
+    "Goa beaches",
+    "Uttarakhand tours",
+  ],
+});
 
 export default function DestinationsPage() {
   return (
@@ -18,7 +27,7 @@ export default function DestinationsPage() {
           <h1 className="mt-3 font-heading text-4xl font-semibold sm:text-5xl">
             Destinations
           </h1>
-          <p className="text-primary-foreground/80 mt-4 max-w-2xl">
+          <p className="mt-4 max-w-2xl text-primary-foreground/80">
             From Himalayan peaks to golden deserts and sun-kissed beaches — find
             your next journey across India&apos;s most captivating states.
           </p>

@@ -3,7 +3,7 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { MotionProvider } from "@/components/motion-provider";
 import { Navbar } from "@/components/navbar";
-import { siteConfig } from "@/lib/site";
+import { getDefaultMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import "./globals.css";
 
@@ -21,14 +21,7 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description:
-    "Curated travel experiences and unforgettable destinations with Wanderlust Travel.",
-};
+export const metadata: Metadata = getDefaultMetadata();
 
 export default function RootLayout({
   children,
