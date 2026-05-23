@@ -1,9 +1,9 @@
 import { ArrowLeft, Calendar, Check, Clock, MapPin } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BookingEnquiryForm } from "@/components/destinations/booking-enquiry-form";
+import { BookingEnquiryFormDynamic } from "@/components/destinations/booking-enquiry-form-dynamic";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { PhotoGallery } from "@/components/destinations/photo-gallery";
 import { DestinationJsonLd } from "@/components/seo/destination-json-ld";
 import {
@@ -55,9 +55,9 @@ export default function DestinationDetailPage({
     <main className="flex-1">
       <DestinationJsonLd destination={destination} />
       <section className="relative min-h-[42vh] overflow-hidden">
-        <Image
+        <OptimisedImage
           src={destination.image}
-          alt={destination.name}
+          alt={`Panoramic view of ${destination.name}, ${destination.state}`}
           fill
           priority
           sizes="100vw"
@@ -160,7 +160,7 @@ export default function DestinationDetailPage({
           </div>
 
           <aside className="lg:sticky lg:top-24">
-            <BookingEnquiryForm destination={destination} />
+            <BookingEnquiryFormDynamic destination={destination} />
           </aside>
         </div>
       </section>

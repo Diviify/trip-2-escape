@@ -94,7 +94,8 @@ export function ToursListing({ tours }: ToursListingProps) {
             <button
               type="button"
               onClick={resetFilters}
-              className="text-xs font-medium text-brand-accent hover:underline"
+              aria-label="Reset all tour filters"
+              className="text-xs font-medium text-brand-accent-text hover:underline"
             >
               Reset
             </button>
@@ -258,7 +259,8 @@ export function ToursListing({ tours }: ToursListingProps) {
               <button
                 type="button"
                 onClick={resetFilters}
-                className="mt-4 text-sm font-medium text-brand-accent hover:underline"
+                aria-label="Clear all tour filters"
+                className="mt-4 text-sm font-medium text-brand-accent-text hover:underline"
               >
                 Clear all filters
               </button>

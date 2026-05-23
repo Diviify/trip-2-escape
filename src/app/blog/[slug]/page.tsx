@@ -1,7 +1,7 @@
 import { ArrowLeft, Clock } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import { BlogCategoryBadge } from "@/components/blog/blog-category-badge";
@@ -49,9 +49,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     <main className="flex-1">
       <article>
         <header className="relative min-h-[44vh] overflow-hidden">
-          <Image
+          <OptimisedImage
             src={post.featuredImage}
-            alt=""
+            alt={`Featured image for ${post.title}`}
             fill
             priority
             sizes="100vw"
@@ -73,9 +73,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="mt-4 max-w-2xl text-lg text-white/85">{post.excerpt}</p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <div className="flex items-center gap-3">
-                <Image
+                <OptimisedImage
                   src={post.author.avatar}
-                  alt=""
+                  alt={`Photo of ${post.author.name}, ${post.author.role}`}
                   width={44}
                   height={44}
                   className="size-11 rounded-full border-2 border-white/30 object-cover"

@@ -56,7 +56,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             <a
               href={`#${heading.id}`}
               className={cn(
-                "block leading-snug transition-colors hover:text-brand-accent",
+                "block leading-snug transition-colors hover:text-brand-accent-text",
                 activeId === heading.id
                   ? "font-medium text-brand-primary"
                   : "text-muted-foreground"

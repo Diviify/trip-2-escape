@@ -38,6 +38,7 @@ export function TourBookingForm({ tour }: TourBookingFormProps) {
     <form
       onSubmit={handleSubmit}
       className="space-y-4 rounded-2xl border border-border bg-card p-6 shadow-sm"
+      aria-label={`Book ${tour.title} tour`}
     >
       <div>
         <h3 className="font-heading text-xl font-semibold text-brand-primary">

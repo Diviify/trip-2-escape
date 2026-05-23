@@ -48,22 +48,26 @@ export function Navbar() {
           </Link>
 
           <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={cn(
-                    "text-sm font-medium transition-colors hover:text-brand-accent",
-                    pathname === link.href ||
-                      (link.href !== "/" && pathname.startsWith(link.href))
-                      ? "text-brand-primary"
-                      : "text-muted-foreground"
-                  )}
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={cn(
+                      "text-sm font-medium transition-colors hover:text-brand-accent-text focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50",
+                      isActive ? "text-brand-primary" : "text-muted-foreground"
+                    )}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
@@ -122,7 +126,14 @@ export function Navbar() {
                     >
                       <Link
                         href={link.href}
-                        className="block rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-brand-primary"
+                        aria-current={
+                          pathname === link.href ||
+                          (link.href !== "/" &&
+                            pathname.startsWith(link.href))
+                            ? "page"
+                            : undefined
+                        }
+                        className="block rounded-lg px-3 py-3 text-base font-medium text-foreground transition-colors hover:bg-muted hover:text-brand-primary focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
                         onClick={() => setMobileOpen(false)}
                       >
                         {link.label}

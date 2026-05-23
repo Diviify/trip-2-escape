@@ -30,6 +30,7 @@ export function DestinationFilter({
           type="button"
           role="tab"
           aria-selected={active === filter}
+          aria-label={`Filter by ${filter}`}
           onClick={() => onChange(filter)}
           className={cn(
             "rounded-full border px-4 py-2 text-sm font-medium transition-colors",

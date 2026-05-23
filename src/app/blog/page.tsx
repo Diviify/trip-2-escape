@@ -24,7 +24,7 @@ export default function BlogPage() {
     <main className="flex-1">
       <section className="border-b bg-brand-primary px-4 py-16 text-primary-foreground sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-accent">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-accent-text">
             Journal
           </p>
           <h1 className="mt-3 font-heading text-4xl font-semibold sm:text-5xl">

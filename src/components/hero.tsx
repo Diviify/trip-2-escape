@@ -6,10 +6,9 @@ import {
   useTransform,
   type MotionValue,
 } from "framer-motion";
-import Image from "next/image";
 import { useRef } from "react";
 import { HeroSearchBar } from "@/components/hero-search-bar";
-
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { photo, unsplash } from "@/lib/images";
 
 const HERO_IMAGE = unsplash(photo.hero, 2400);
@@ -31,15 +30,16 @@ export function Hero() {
       ref={sectionRef}
       id="home"
       className="relative min-h-screen overflow-hidden"
+      aria-label="Hero"
     >
       <div className="absolute inset-0 z-0">
         <motion.div
-          className="absolute inset-0 will-change-transform"
+          className="absolute inset-0 will-change-transform motion-reduce:transform-none"
           style={{ y: backgroundY, scale: backgroundScale }}
         >
-          <Image
+          <OptimisedImage
             src={HERO_IMAGE}
-            alt="Mountain landscape at golden hour"
+            alt="Sunlit mountain valley with pine forests and golden sky at dawn"
             fill
             priority
             sizes="100vw"
@@ -73,7 +73,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p
-          className="mt-5 max-w-2xl text-base text-white/85 sm:text-lg md:text-xl"
+          className="mt-5 max-w-2xl text-base text-white/90 sm:text-lg md:text-xl"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
@@ -104,12 +104,13 @@ function ScrollHint({ progress }: { progress: MotionValue<number> }) {
     <motion.div
       className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex"
       style={{ opacity: hintOpacity }}
+      aria-hidden
     >
-      <span className="text-xs uppercase tracking-widest text-white/70">
+      <span className="text-xs uppercase tracking-widest text-white/80">
         Scroll to explore
       </span>
       <motion.span
-        className="block h-10 w-px origin-top bg-white/50"
+        className="block h-10 w-px origin-top bg-white/70"
         animate={{ scaleY: [0.4, 1, 0.4] }}
         transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
       />

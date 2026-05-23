@@ -35,9 +35,14 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="flex min-h-screen flex-col bg-background font-sans text-foreground antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <MotionProvider>
           <Navbar />
-          <div className="flex flex-1 flex-col">{children}</div>
+          <div id="main-content" className="flex flex-1 flex-col">
+            {children}
+          </div>
           <Footer />
         </MotionProvider>
       </body>

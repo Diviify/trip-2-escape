@@ -21,11 +21,12 @@
     --secondary: #ebe4d6;
     --secondary-foreground: #1b2a4a;
     --muted: #ebe4d6;
-    --muted-foreground: #4a5f7a;
+    --muted-foreground: #3e5068;
     --accent: #d4a843;
     --accent-foreground: #1b2a4a;
+    --accent-text: #7a5f10;
     --destructive: #e07b5a;
-    --coral: #e07b5a;
+    --coral: #c45f42;
     --border: #d4c9b8;
     --input: #d4c9b8;
     --ring: #d4a843;
@@ -86,6 +87,15 @@
 
   body {
     @apply bg-background font-sans text-foreground;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand-primary focus:px-4 focus:py-2 focus:text-primary-foreground;
   }
 
   h1,

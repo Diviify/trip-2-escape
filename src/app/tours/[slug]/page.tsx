@@ -1,10 +1,10 @@
 import { ArrowLeft, Clock, Users } from "lucide-react";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { StarRating } from "@/components/tours/star-rating";
-import { TourBookingForm } from "@/components/tours/tour-booking-form";
+import { TourBookingFormDynamic } from "@/components/tours/tour-booking-form-dynamic";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { buttonVariants } from "@/components/ui/button";
 import { createPageMetadata } from "@/lib/seo";
 import { formatPriceInr, getAllTourSlugs, getTourBySlug } from "@/lib/tours";
@@ -44,9 +44,9 @@ export default function TourDetailPage({ params }: TourPageProps) {
   return (
     <main className="flex-1">
       <section className="relative min-h-[36vh] overflow-hidden">
-        <Image
+        <OptimisedImage
           src={tour.thumbnail}
-          alt={tour.title}
+          alt={`${tour.title} — ${tour.region} tour package`}
           fill
           priority
           sizes="100vw"
@@ -115,7 +115,7 @@ export default function TourDetailPage({ params }: TourPageProps) {
           </div>
 
           <aside className="lg:sticky lg:top-24">
-            <TourBookingForm tour={tour} />
+            <TourBookingFormDynamic tour={tour} />
           </aside>
         </div>
       </section>

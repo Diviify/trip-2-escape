@@ -1,27 +1,27 @@
 import { ArrowRight, Clock } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { BlogCategoryBadge } from "@/components/blog/blog-category-badge";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { formatBlogDate, type BlogPostMeta } from "@/lib/blog";
-import { cn } from "@/lib/utils";
 
 type BlogCardProps = {
   post: BlogPostMeta;
   className?: string;
 };
 
-export function BlogCard({ post, className }: BlogCardProps) {
+export function BlogCard({ post }: BlogCardProps) {
+  const imageAlt = `Featured image for article: ${post.title}`;
+
   return (
-    <article
-      className={cn(
-        "group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg",
-        className
-      )}
-    >
-      <Link href={`/blog/${post.slug}`} className="relative aspect-[16/10] overflow-hidden">
-        <Image
+    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
+      <Link
+        href={`/blog/${post.slug}`}
+        className="relative aspect-[16/10] overflow-hidden focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        aria-label={`Read article: ${post.title}`}
+      >
+        <OptimisedImage
           src={post.featuredImage}
-          alt=""
+          alt={imageAlt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -43,7 +43,7 @@ export function BlogCard({ post, className }: BlogCardProps) {
         </div>
 
         <Link href={`/blog/${post.slug}`}>
-          <h2 className="mt-2 font-heading text-xl font-semibold text-brand-primary transition-colors group-hover:text-brand-accent">
+          <h2 className="mt-2 font-heading text-xl font-semibold text-brand-primary transition-colors group-hover:text-brand-accent-text">
             {post.title}
           </h2>
         </Link>
@@ -54,9 +54,9 @@ export function BlogCard({ post, className }: BlogCardProps) {
 
         <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-4">
           <div className="flex items-center gap-2.5">
-            <Image
+            <OptimisedImage
               src={post.author.avatar}
-              alt=""
+              alt={`Author photo: ${post.author.name}`}
               width={32}
               height={32}
               className="size-8 rounded-full object-cover"
@@ -73,7 +73,7 @@ export function BlogCard({ post, className }: BlogCardProps) {
 
           <Link
             href={`/blog/${post.slug}`}
-            className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary transition-colors hover:text-brand-accent"
+            className="inline-flex items-center gap-1 text-sm font-medium text-brand-primary transition-colors hover:text-brand-accent-text focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
           >
             Read
             <ArrowRight

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/hero";
+import { TravelQuizSection } from "@/components/travel-quiz-section";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -55,6 +56,7 @@ export default function Home() {
           </a>
         </div>
       </section>
+      <TravelQuizSection />
       <section id="about" className="scroll-mt-20 border-t bg-card px-6 py-16">
         <div className="mx-auto max-w-6xl text-center">
           <h2 className="font-heading text-3xl font-semibold text-brand-primary">

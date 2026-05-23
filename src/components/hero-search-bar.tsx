@@ -51,6 +51,7 @@ export function HeroSearchBar({ className }: HeroSearchBarProps) {
   return (
     <form
       onSubmit={handleSubmit}
+      aria-label="Search destinations and tours"
       className={cn(
         "w-full max-w-5xl rounded-2xl border border-white/20 bg-white/95 p-3 shadow-2xl backdrop-blur-md",
         className
@@ -156,6 +157,7 @@ export function HeroSearchBar({ className }: HeroSearchBarProps) {
           <Button
             type="submit"
             size="lg"
+            aria-label="Search trips"
             className="h-12 w-full bg-brand-accent text-brand-primary hover:bg-brand-accent/90 lg:h-full lg:min-w-[140px]"
           >
             <Search className="size-4" aria-hidden />

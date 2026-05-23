@@ -58,6 +58,7 @@ export function BlogListing({ posts }: BlogListingProps) {
             type="button"
             role="tab"
             aria-selected={activeCategory === filter}
+            aria-label={`Filter articles by ${filter}`}
             onClick={() => setActiveCategory(filter)}
             className={cn(
               "rounded-full border px-4 py-2 text-sm font-medium transition-colors",

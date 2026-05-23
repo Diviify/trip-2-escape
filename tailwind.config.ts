@@ -27,8 +27,9 @@ const config: Config = {
         brand: {
           primary: "#1B2A4A",
           accent: "#D4A843",
+          "accent-text": "#7A5F10",
           sand: "#F5F0E8",
-          coral: "#E07B5A",
+          coral: "#C45F42",
         },
         sand: {
           DEFAULT: "#F5F0E8",

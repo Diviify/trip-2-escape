@@ -1,6 +1,6 @@
 import { ArrowRight, Clock } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import { StarRating } from "@/components/tours/star-rating";
 import { buttonVariants } from "@/components/ui/button";
 import { formatPriceInr, type Tour } from "@/lib/tours";
@@ -11,12 +11,18 @@ type TourCardProps = {
 };
 
 export function TourCard({ tour }: TourCardProps) {
+  const imageAlt = `${tour.title} tour in ${tour.region}`;
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <Image
+      <Link
+        href={`/tours/${tour.slug}`}
+        className="relative aspect-[16/10] overflow-hidden focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+        aria-label={`View ${tour.title} tour details`}
+      >
+        <OptimisedImage
           src={tour.thumbnail}
-          alt={tour.title}
+          alt={imageAlt}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -25,14 +31,19 @@ export function TourCard({ tour }: TourCardProps) {
           <Clock className="size-3 text-brand-accent" aria-hidden />
           {tour.durationLabel}
         </span>
-      </div>
+      </Link>
 
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
           {tour.region}
         </p>
         <h3 className="mt-1 font-heading text-xl font-semibold text-brand-primary">
-          {tour.title}
+          <Link
+            href={`/tours/${tour.slug}`}
+            className="hover:text-brand-accent-text focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          >
+            {tour.title}
+          </Link>
         </h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm text-muted-foreground">
           {tour.shortDescription}

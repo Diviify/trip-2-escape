@@ -16,7 +16,11 @@ export function NewsletterForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form
+      onSubmit={handleSubmit}
+      aria-label="Newsletter signup"
+      className="space-y-3"
+    >
       <div className="flex flex-col gap-2 sm:flex-row">
         <Input
           type="email"
@@ -36,7 +40,7 @@ export function NewsletterForm() {
         </Button>
       </div>
       {status === "success" && (
-        <p className="text-sm text-brand-accent" role="status">
+        <p className="text-sm text-primary-foreground/90" role="status">
           Thanks for subscribing! We&apos;ll be in touch soon.
         </p>
       )}

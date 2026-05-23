@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 import type { MDXComponents } from "mdx/types";
 import type { ComponentPropsWithoutRef } from "react";
 import { slugify } from "@/lib/blog";
@@ -100,7 +100,7 @@ export const mdxComponents: MDXComponents = {
         <a
           href={href}
           className={cn(
-            "text-brand-primary underline decoration-brand-accent/50 underline-offset-4 hover:text-brand-accent",
+            "text-brand-primary underline decoration-brand-accent/50 underline-offset-4 hover:text-brand-accent-text",
             className
           )}
           target="_blank"
@@ -113,7 +113,7 @@ export const mdxComponents: MDXComponents = {
       <Link
         href={href ?? "#"}
         className={cn(
-          "text-brand-primary underline decoration-brand-accent/50 underline-offset-4 hover:text-brand-accent",
+          "text-brand-primary underline decoration-brand-accent/50 underline-offset-4 hover:text-brand-accent-text",
           className
         )}
         {...props}
@@ -123,11 +123,15 @@ export const mdxComponents: MDXComponents = {
   img: (props: ComponentPropsWithoutRef<"img">) => {
     const src = typeof props.src === "string" ? props.src : "";
     if (!src) return null;
+    const alt =
+      props.alt && props.alt.length > 0
+        ? props.alt
+        : "Illustration in travel article";
     return (
       <span className="relative my-8 block aspect-video overflow-hidden rounded-xl">
-        <Image
+        <OptimisedImage
           src={src}
-          alt={props.alt ?? ""}
+          alt={alt}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 720px"

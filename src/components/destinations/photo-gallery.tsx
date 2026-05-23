@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { OptimisedImage } from "@/components/ui/optimised-image";
 
 type PhotoGalleryProps = {
   images: string[];
@@ -17,7 +16,7 @@ export function PhotoGallery({ images, alt }: PhotoGalleryProps) {
   if (!activeImage) return null;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" role="region" aria-label={`${alt} photo gallery`}>
       <motion.div
         key={activeImage}
         initial={{ opacity: 0.6 }}
@@ -25,11 +24,10 @@ export function PhotoGallery({ images, alt }: PhotoGalleryProps) {
         transition={{ duration: 0.35 }}
         className="relative aspect-[16/10] overflow-hidden rounded-2xl"
       >
-        <Image
+        <OptimisedImage
           src={activeImage}
-          alt={`${alt} — photo ${activeIndex + 1}`}
+          alt={`${alt} — gallery image ${activeIndex + 1} of ${images.length}`}
           fill
-          priority
           sizes="(max-width: 1200px) 100vw, 960px"
           className="object-cover"
         />
@@ -41,18 +39,17 @@ export function PhotoGallery({ images, alt }: PhotoGalleryProps) {
             key={image}
             type="button"
             onClick={() => setActiveIndex(index)}
-            className={cn(
-              "relative aspect-[4/3] overflow-hidden rounded-lg border-2 transition-all",
+            className={`relative aspect-[4/3] overflow-hidden rounded-lg border-2 transition-all focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 ${
               index === activeIndex
                 ? "border-brand-accent ring-2 ring-brand-accent/30"
                 : "border-transparent opacity-70 hover:opacity-100"
-            )}
-            aria-label={`View image ${index + 1}`}
+            }`}
+            aria-label={`Show gallery image ${index + 1} of ${images.length} for ${alt}`}
             aria-pressed={index === activeIndex}
           >
-            <Image
+            <OptimisedImage
               src={image}
-              alt=""
+              alt={`${alt} thumbnail ${index + 1}`}
               fill
               sizes="120px"
               className="object-cover"
