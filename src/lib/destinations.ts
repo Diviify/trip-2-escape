@@ -208,11 +208,7 @@ export const destinations: Destination[] = [
     priceFrom: 8999,
     duration: "4 days / 3 nights",
     image: unsplash(photo.temple),
-    gallery: unsplashGallery([
-      photo.temple,
-      photo.mountainRange,
-      photo.hero,
-    ]),
+    gallery: unsplashGallery([photo.temple, photo.mountainRange, photo.hero]),
     highlights: [
       "Ganges white-water rafting",
       "Sunrise yoga session",
@@ -335,11 +331,7 @@ export const destinations: Destination[] = [
     priceFrom: 13999,
     duration: "5 days / 4 nights",
     image: unsplash(photo.indiaArch),
-    gallery: unsplashGallery([
-      photo.indiaArch,
-      photo.temple,
-      photo.hero,
-    ]),
+    gallery: unsplashGallery([photo.indiaArch, photo.temple, photo.hero]),
     highlights: [
       "Amber Fort elephant ride",
       "Hawa Mahal photo stop",
@@ -431,11 +423,7 @@ export const destinations: Destination[] = [
     priceFrom: 16999,
     duration: "5 days / 4 nights",
     image: unsplash(photo.roadTrip),
-    gallery: unsplashGallery([
-      photo.roadTrip,
-      photo.tropical,
-      photo.travel,
-    ]),
+    gallery: unsplashGallery([photo.roadTrip, photo.tropical, photo.travel]),
     highlights: [
       "Sam Sand Dunes camel trek",
       "Living fort exploration",

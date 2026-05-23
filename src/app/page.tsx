@@ -32,6 +32,12 @@ export default function Home() {
           <p className="mt-3 text-muted-foreground">
             Guided experiences tailored to your travel style.
           </p>
+          <a
+            href="/tours"
+            className="mt-6 inline-flex rounded-full bg-brand-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-brand-primary/90"
+          >
+            View tour packages
+          </a>
         </div>
       </section>
       <section id="about" className="scroll-mt-20 border-t bg-card px-6 py-16">

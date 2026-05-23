@@ -1,14 +1,14 @@
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/destinations", label: "Destinations" },
-  { href: "/#tours", label: "Tours" },
+  { href: "/tours", label: "Tours" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
 ] as const;
 
 export const footerQuickLinks = [
   { href: "/destinations", label: "Destinations" },
-  { href: "/#tours", label: "Tours" },
+  { href: "/tours", label: "Tours" },
   { href: "/#about", label: "About" },
   { href: "/#contact", label: "Contact" },
   { href: "/#faq", label: "FAQ" },
